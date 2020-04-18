@@ -412,146 +412,146 @@
       uploadinfo;
     try {
       js_top_panel_box = unsafeWindow.document.getElementById('js_top_panel_box');
-      // if (js_top_panel_box != null) {
-      //   cont = document.createElement('div');
-      //   finput = document.createElement('input');
-      //   finput.setAttribute('type', 'file');
-      //   procLabel = document.createElement('span');
-      //   cont.appendChild(finput);
-      //   cont.appendChild(procLabel);
-      //   js_top_panel_box.appendChild(cont);
-      //   cont.style.position = 'absolute';
-      //   cont.style.top = '20px';
-      //   cont.style.left = '320px';
-      //   fastSig = function (userid, fileid, target, userkey) {
-      //     let sha1, tmp;
-      //     sha1 = new jsSHA('SHA-1', 'TEXT');
-      //     sha1.update(`${userid}${fileid}${target}0`);
-      //     tmp = sha1.getHash('HEX');
-      //     sha1 = new jsSHA('SHA-1', 'TEXT');
-      //     sha1.update(`${userkey}${tmp}000000`);
-      //     return sha1.getHash('HEX', {
-      //       outputUpper: true
-      //     });
-      //   };
-      //   uploadinfo = null;
-      //   fastUpload = function ({fileid, preid, filename, filesize}) {
-      //     let tm, tmus;
-      //     tmus = (new Date()).getTime();
-      //     tm = Math.floor(tmus / 1000);
-      //     return GM_xmlhttpRequest({
-      //       method: 'POST',
-      //       url: uploadinfo.url_upload + '?' + dictToQuery({
-      //         appid: 0,
-      //         appfrom: 10,
-      //         appversion: '2.0.0.0',
-      //         format: 'json',
-      //         isp: 0,
-      //         sig: fastSig(uploadinfo.user_id, fileid, 'U_1_0', uploadinfo.userkey),
-      //         t: tm
-      //       }),
-      //       data: dictToForm({
-      //         api_version: '2.0.0.0',
-      //         fileid: fileid,
-      //         filename: filename,
-      //         filesize: filesize,
-      //         preid: preid,
-      //         target: 'U_1_0',
-      //         userid: uploadinfo.user_id
-      //       }),
-      //       responseType: 'json',
-      //       headers: {
-      //         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      //       },
-      //       onload: function (response) {
-      //         if (response.status === 200) {
-      //           if (response.response.status === 2) {
-      //             return alert('fastupload OK, refresh window and goto root folder to find it');
-      //           } else {
-      //             return alert('fastupload FAIL, LOL');
-      //           }
-      //         } else {
-      //           return GM_log(`response.status = ${response.status}`);
-      //         }
-      //       }
-      //     });
-      //   };
-      //   getUserKey = function (param) {
-      //     return GM_xmlhttpRequest({
-      //       method: 'GET',
-      //       url: 'http://proapi.115.com/app/uploadinfo',
-      //       responseType: 'json',
-      //       onload: function (response) {
-      //         if (response.status === 200) {
-      //           uploadinfo = response.response;
-      //           return fastUpload(param);
-      //         } else {
-      //           return GM_log(`response.status = ${response.status}`);
-      //         }
-      //       }
-      //     });
-      //   };
-      //   finput.onchange = function (e) {
-      //     let PSIZE, allSha1, f, finalPart, nextPart, npart, preid;
-      //     if (e.target.files.length === 0) {
-      //       return;
-      //     }
-      //     f = e.target.files[0];
-      //     if (f.size < 128 * 1024) {
-      //       alert('file size less than 128K');
-      //       return;
-      //     }
-      //     PSIZE = 1 * 1024 * 1024;
-      //     npart = Math.floor((f.size + PSIZE - 1) / PSIZE);
-      //     allSha1 = new jsSHA('SHA-1', 'ARRAYBUFFER');
-      //     preid = '';
-      //     finalPart = function () {
-      //       let fileid, param;
-      //       fileid = allSha1.getHash('HEX', {
-      //         outputUpper: true
-      //       });
-      //       param = {
-      //         fileid,
-      //         preid,
-      //         filename: f.name,
-      //         filesize: f.size
-      //       };
-      //       if (uploadinfo != null) {
-      //         return fastUpload(param);
-      //       } else {
-      //         return getUserKey(param);
-      //       }
-      //     };
-      //     nextPart = function (n) {
-      //       let b, reader;
-      //       reader = new FileReader();
-      //       b = f.slice(n * PSIZE, ((n + 1) * PSIZE > f.size ? f.size : (n + 1) * PSIZE));
-      //       reader.onerror = function (e) {
-      //         return GM_log(`${e.target.error}`);
-      //       };
-      //       reader.onload = function (e) {
-      //         let data, sha1;
-      //         data = new Uint8Array(e.target.result);
-      //         if (n === 0) {
-      //           sha1 = new jsSHA('SHA-1', 'ARRAYBUFFER');
-      //           sha1.update(data.slice(0, 128 * 1024));
-      //           preid = sha1.getHash('HEX', {
-      //             outputUpper: true
-      //           });
-      //         }
-      //         allSha1.update(data);
-      //         procLabel.textContent = `(${Math.floor((n + 1) * 100 / npart)}%)`;
-      //         if (n === npart - 1) {
-      //           return finalPart();
-      //         } else {
-      //           return nextPart(n + 1);
-      //         }
-      //       };
-      //       return reader.readAsArrayBuffer(b);
-      //     };
-      //     return nextPart(0);
-      //   };
-      // }
+      if (js_top_panel_box != null) {
+        cont = document.createElement('div');
+        finput = document.createElement('input');
+        finput.setAttribute('type', 'file');
+        procLabel = document.createElement('span');
+        // cont.appendChild(finput);
+        cont.appendChild(procLabel);
+        js_top_panel_box.appendChild(cont);
+        cont.style.position = 'absolute';
+        cont.style.top = '20px';
+        cont.style.left = '320px';
+        fastSig = function (userid, fileid, target, userkey) {
+          let sha1, tmp;
+          sha1 = new jsSHA('SHA-1', 'TEXT');
+          sha1.update(`${userid}${fileid}${target}0`);
+          tmp = sha1.getHash('HEX');
+          sha1 = new jsSHA('SHA-1', 'TEXT');
+          sha1.update(`${userkey}${tmp}000000`);
+          return sha1.getHash('HEX', {
+            outputUpper: true
+          });
+        };
+        uploadinfo = null;
+        fastUpload = function ({fileid, preid, filename, filesize}) {
+          let tm, tmus;
+          tmus = (new Date()).getTime();
+          tm = Math.floor(tmus / 1000);
+          return GM_xmlhttpRequest({
+            method: 'POST',
+            url: uploadinfo.url_upload + '?' + dictToQuery({
+              appid: 0,
+              appfrom: 10,
+              appversion: '2.0.0.0',
+              format: 'json',
+              isp: 0,
+              sig: fastSig(uploadinfo.user_id, fileid, 'U_1_0', uploadinfo.userkey),
+              t: tm
+            }),
+            data: dictToForm({
+              api_version: '2.0.0.0',
+              fileid: fileid,
+              filename: filename,
+              filesize: filesize,
+              preid: preid,
+              target: 'U_1_0',
+              userid: uploadinfo.user_id
+            }),
+            responseType: 'json',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            onload: function (response) {
+              if (response.status === 200) {
+                if (response.response.status === 2) {
+                  return alert('fastupload OK, refresh window and goto root folder to find it');
+                } else {
+                  return alert('fastupload FAIL, LOL');
+                }
+              } else {
+                return GM_log(`response.status = ${response.status}`);
+              }
+            }
+          });
+        };
+        getUserKey = function (param) {
+          return GM_xmlhttpRequest({
+            method: 'GET',
+            url: 'http://proapi.115.com/app/uploadinfo',
+            responseType: 'json',
+            onload: function (response) {
+              if (response.status === 200) {
+                uploadinfo = response.response;
+                return fastUpload(param);
+              } else {
+                return GM_log(`response.status = ${response.status}`);
+              }
+            }
+          });
+        };
+        finput.onchange = function (e) {
+          let PSIZE, allSha1, f, finalPart, nextPart, npart, preid;
+          if (e.target.files.length === 0) {
+            return;
+          }
+          f = e.target.files[0];
+          if (f.size < 128 * 1024) {
+            alert('file size less than 128K');
+            return;
+          }
+          PSIZE = 1 * 1024 * 1024;
+          npart = Math.floor((f.size + PSIZE - 1) / PSIZE);
+          allSha1 = new jsSHA('SHA-1', 'ARRAYBUFFER');
+          preid = '';
+          finalPart = function () {
+            let fileid, param;
+            fileid = allSha1.getHash('HEX', {
+              outputUpper: true
+            });
+            param = {
+              fileid,
+              preid,
+              filename: f.name,
+              filesize: f.size
+            };
+            if (uploadinfo != null) {
+              return fastUpload(param);
+            } else {
+              return getUserKey(param);
+            }
+          };
+          nextPart = function (n) {
+            let b, reader;
+            reader = new FileReader();
+            b = f.slice(n * PSIZE, ((n + 1) * PSIZE > f.size ? f.size : (n + 1) * PSIZE));
+            reader.onerror = function (e) {
+              return GM_log(`${e.target.error}`);
+            };
+            reader.onload = function (e) {
+              let data, sha1;
+              data = new Uint8Array(e.target.result);
+              if (n === 0) {
+                sha1 = new jsSHA('SHA-1', 'ARRAYBUFFER');
+                sha1.update(data.slice(0, 128 * 1024));
+                preid = sha1.getHash('HEX', {
+                  outputUpper: true
+                });
+              }
+              allSha1.update(data);
+              procLabel.textContent = `(${Math.floor((n + 1) * 100 / npart)}%)`;
+              if (n === npart - 1) {
+                return finalPart();
+              } else {
+                return nextPart(n + 1);
+              }
+            };
+            return reader.readAsArrayBuffer(b);
+          };
+          return nextPart(0);
+        };
+      }
       if (unsafeWindow.UPLOAD_CONFIG_H5 != null) {
         fakeSizeLimitGetter = function () {
           return 115 * 1024 * 1024 * 1024;

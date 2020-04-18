@@ -18,3 +18,8 @@ rawgit.com 被墙，移步 https://github.com/kkHAIKE/fake115/issues/57
 
 ## 支付宝捐助
 ![支付宝捐助](https://github.com/kkHAIKE/fake115/blob/master/qrcode.png)
+
+
+## 特别说明
+
+* 在kkhaike项目的基础上，将部分代码注释掉，修复了出现“选择文件”的bug,暂时未发现问题
